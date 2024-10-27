@@ -1,0 +1,86 @@
+<ion-header [translucent]="true">
+</ion-header>
+
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Asistencia</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">Ramos</ion-content>
+</ion-menu>
+
+<ion-content >
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button class="menu-button"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Menu</ion-title>
+        <button class="logout-button" (click)="logout()" slot="end">
+          <ion-icon name="log-out-outline"></ion-icon>
+        </button>
+        
+      </ion-toolbar>       
+    </ion-header>
+    <ion-content class="ion-padding">
+      
+      <div class="welcome-container">
+        <h1 class="welcome-title">Bienvenido :</h1>
+        <h1 class="welcome-user">{{ username }}</h1>
+      </div>
+        <ion-segment [(ngModel)]="segment"  mode="ios">
+          <ion-segment-button value="Scan">
+            <ion-label>Escanear QR</ion-label>
+          </ion-segment-button>
+          
+        </ion-segment>
+        <div class="segment" *ngIf="segment === 'Scan'" style="text-align: center;">
+          <div class="segment-content">
+            <img src="assets/img/scan-qr.webp" alt="" style="display: block; margin: 0 auto;">
+            <h6>Escanea el QR</h6>
+            <ion-col>
+              <ion-button (click)="startScan()" class="submit" expand="block">
+                Escanear QR  
+                <ion-icon slot="end" name="scan-outline"></ion-icon>
+              </ion-button>
+
+              
+
+              <ion-item class="result " *ngIf="scanResult" lines="none">
+                <ion-label>
+                  <p>Escaneado</p>
+                  <div>{{scanResult}}</div>
+                </ion-label>
+                
+              </ion-item>
+
+
+             
+
+            </ion-col>
+          </div>
+        </div>
+        
+     
+
+
+
+
+
+
+      <div class="content-container">
+        <img #bouncingImage src="assets/img/azulv.gif" class="logo-image">
+        
+        <div class="button-container">
+          <ion-button (click)="presentAlert()">Accede a tu camara</ion-button>
+        </div>
+      </div>
+    </ion-content>
+  </div>
+
+
+  
+
+</ion-content>
